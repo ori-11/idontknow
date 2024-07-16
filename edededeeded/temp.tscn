@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck4ifge7t1kxm"]
+
+[ext_resource type="Script" path="res://temp.gd" id="1_7vqum"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fxa0f"]
+font_size = 50
+
+[node name="temp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vqum")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+position = Vector2i(370, 160)
+size = Vector2i(405, 314)
+ok_button_text = "Открыть"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 21.0
+offset_right = 276.0
+offset_bottom = 90.0
+label_settings = SubResource("LabelSettings_fxa0f")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 565.0
+offset_right = 272.0
+offset_bottom = 634.0
+label_settings = SubResource("LabelSettings_fxa0f")
+
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

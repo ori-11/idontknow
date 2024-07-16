@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://cx223fcn1ivcf"]
+
+[ext_resource type="Script" path="res://time.gd" id="1_0svp8"]
+[ext_resource type="Texture2D" uid="uid://bptqyj2o2h55w" path="res://backgrounds/1/IMG_1712_page_0001.jpg" id="1_wg735"]
+[ext_resource type="Texture2D" uid="uid://16pg7bbsscxo" path="res://backgrounds/1/IMG_1712_page_0002.jpg" id="2_4d0wu"]
+[ext_resource type="PackedScene" uid="uid://bk1xv53vwian5" path="res://guy.tscn" id="2_ads3g"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_fto5m"]
+[ext_resource type="Texture2D" uid="uid://d2fhw8ywja5cc" path="res://backgrounds/1/IMG_1712_page_0003.jpg" id="3_x0nkd"]
+[ext_resource type="Script" path="res://AnimatedSprite2D.gd" id="4_ntkaw"]
+[ext_resource type="PackedScene" uid="uid://ck4ifge7t1kxm" path="res://temp.tscn" id="8_hdb4i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o5uyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wg735")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4d0wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x0nkd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvtrr"]
+size = Vector2(79.5, 1030)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_0svp8")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1775, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+sprite_frames = SubResource("SpriteFrames_o5uyy")
+centered = false
+script = ExtResource("4_ntkaw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(884, 523)
+zoom = Vector2(0.65, 0.65)
+position_smoothing_speed = 1.0
+script = ExtResource("2_fto5m")
+
+[node name="CharacterBody2D" parent="Camera2D" instance=ExtResource("2_ads3g")]
+position = Vector2(-685, 243)
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(877.5, -3)
+shape = SubResource("RectangleShape2D_rvtrr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(-926, -3)
+shape = SubResource("RectangleShape2D_rvtrr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(9, -541)
+rotation = 1.5708
+scale = Vector2(1, 1.76)
+shape = SubResource("RectangleShape2D_rvtrr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(-20, 520)
+rotation = 1.5708
+scale = Vector2(1, 1.76)
+shape = SubResource("RectangleShape2D_rvtrr")
+
+[node name="temp" parent="Camera2D" instance=ExtResource("8_hdb4i")]
+offset_left = -884.0
+offset_top = -523.0
+offset_right = -884.0
+offset_bottom = -523.0
+
+[node name="spawntime" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Camera2D/Area2D" to="Camera2D" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="spawntime" to="." method="_on_spawntime_timeout"]

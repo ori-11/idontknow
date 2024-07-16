@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsqdw3k7isf3y"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_hgd57"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcmy7"]
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_hgd57")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hcmy7")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-13, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
