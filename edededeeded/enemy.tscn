@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://enemy.gd" id="1_hgd57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcmy7"]
+size = Vector2(2, 100)
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_hgd57")
@@ -14,7 +15,6 @@ scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_hcmy7")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-13, 0)

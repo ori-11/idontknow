@@ -14,7 +14,7 @@ func _input(event):
 	if event.is_action_pressed("fire"):
 		var fire = fireball.instantiate()
 		$Node2D.add_child(fire)
-		fire.reparent($"../..")
+		fire.reparent($"..")
 		fire.speed = speed
 func _physics_process(delta):
 	#var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

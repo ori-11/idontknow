@@ -1,5 +1,5 @@
-extends Camera2D
-
+extends Area2D
+@onready var pridurok = preload("res://pridurok.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,10 +8,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x += 10
+	position.x -= 45
+	rotation += 5
 	pass
 
 
-func _on_area_2d_body_entered(body):
-	body.queue_free()
+func _on_body_entered(body):
+	get_node("/root/Node2D/ParallaxBackground/ParallaxLayer/AnimatedSprite2D").set_material(pridurok)
 	pass # Replace with function body.

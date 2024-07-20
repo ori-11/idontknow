@@ -11,7 +11,6 @@ func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
 
 func _on_grazething_body_entered(body):
-	if body != null:
-		if body == get_node("/root/Node2D/Camera2D/CharacterBody2D"):
-			get_node("/root/Node2D/Camera2D/CharacterBody2D").points += 100
+	if body == get_node("/root/Node2D/Camera2D/CharacterBody2D"):
+		get_node("/root/Node2D/Camera2D/CharacterBody2D").points += 100
 	pass

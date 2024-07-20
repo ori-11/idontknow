@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx223fcn1ivcf"]
+[gd_scene load_steps=12 format=3 uid="uid://cx223fcn1ivcf"]
 
 [ext_resource type="Script" path="res://time.gd" id="1_0svp8"]
 [ext_resource type="Texture2D" uid="uid://bptqyj2o2h55w" path="res://backgrounds/1/IMG_1712_page_0001.jpg" id="1_wg735"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d2fhw8ywja5cc" path="res://backgrounds/1/IMG_1712_page_0003.jpg" id="3_x0nkd"]
 [ext_resource type="Script" path="res://AnimatedSprite2D.gd" id="4_ntkaw"]
 [ext_resource type="PackedScene" uid="uid://ck4ifge7t1kxm" path="res://temp.tscn" id="8_hdb4i"]
+[ext_resource type="PackedScene" uid="uid://cm4h383u66vdn" path="res://portal.tscn" id="10_7wqf6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o5uyy"]
 animations = [{
@@ -39,6 +40,7 @@ script = ExtResource("1_0svp8")
 motion_mirroring = Vector2(1775, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-11, -7)
 sprite_frames = SubResource("SpriteFrames_o5uyy")
 centered = false
 script = ExtResource("4_ntkaw")
@@ -55,21 +57,21 @@ position = Vector2(-685, 243)
 [node name="Area2D" type="Area2D" parent="Camera2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2(877.5, -3)
+position = Vector2(1039, -3)
 shape = SubResource("RectangleShape2D_rvtrr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2(-926, -3)
+position = Vector2(-1040, -3)
 shape = SubResource("RectangleShape2D_rvtrr")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2(9, -541)
+position = Vector2(2, -630)
 rotation = 1.5708
 scale = Vector2(1, 1.76)
 shape = SubResource("RectangleShape2D_rvtrr")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2(-20, 520)
+position = Vector2(-6, 609)
 rotation = 1.5708
 scale = Vector2(1, 1.76)
 shape = SubResource("RectangleShape2D_rvtrr")
@@ -80,8 +82,49 @@ offset_top = -523.0
 offset_right = -884.0
 offset_bottom = -523.0
 
+[node name="Area2D2" parent="Camera2D" instance=ExtResource("10_7wqf6")]
+position = Vector2(943, 255)
+scale = Vector2(3.20431, 3.20431)
+
+[node name="spawnpositions" type="Node2D" parent="Camera2D"]
+
+[node name="spawnposition11" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, -220)
+
+[node name="spawnposition12" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, -170)
+
+[node name="spawnposition13" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, -120)
+
+[node name="spawnposition14" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, -70)
+
+[node name="spawnposition15" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, -20)
+
+[node name="spawnposition16" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, 30)
+
+[node name="spawnposition17" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, 80)
+
+[node name="spawnposition18" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, 130)
+
+[node name="spawnposition19" type="Node2D" parent="Camera2D/spawnpositions"]
+position = Vector2(389, 180)
+
+[node name="spawnposition20" type="Node2D" parent="Camera2D/spawnpositions"]
+visible = false
+position = Vector2(389, 230)
+
+[node name="Timer" type="Timer" parent="Camera2D/spawnpositions"]
+
 [node name="spawntime" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="Camera2D/Area2D" to="Camera2D" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Camera2D/spawnpositions/Timer" to="Camera2D/spawnpositions" method="_on_timer_timeout"]
 [connection signal="timeout" from="spawntime" to="." method="_on_spawntime_timeout"]
