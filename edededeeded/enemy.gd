@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @export var fireball = preload("res://fireball.tscn")
 var speed = -50
+var pridurok = true
+@onready var timer = $Timer
 
 func _ready():
 	#var random = RandomNumberGenerator.new()
@@ -14,19 +16,14 @@ func _physics_process(delta):
 	move_and_slide()
 	pass
 
-#func shoot():
-#	var fire = fireball.instantiate()
-#	$Node2D.add_child(fire)
-#	fire.reparent(get_node("/root/Node2D/Camera2D"))
-#	fire.speed = speed
-#	fire.scale.x = -1d 
+func shoot():
+	if timer.is_stopped() and pridurok:
+		var fire = fireball.instantiate()
+		$Node2D.add_child(fire)
+		fire.reparent(get_node("/root/Node2D/Camera2D"))
+		fire.speed = speed
+		fire.scale.x = -1
 
 func _on_timer_timeout():
-	var fire = fireball.instantiate()
-	$Node2D.add_child(fire)
-	fire.reparent(get_node("/root/Node2D/Camera2D"))
-	fire.speed = speed
-	fire.scale.x = -1
-	$Timer.stop()
-	
+	timer.stop()
 

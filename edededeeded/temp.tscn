@@ -32,6 +32,7 @@ offset_bottom = 90.0
 label_settings = SubResource("LabelSettings_fxa0f")
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 17.0
 offset_top = 565.0
