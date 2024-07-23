@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dddm8t81ncm74"]
+
+[ext_resource type="Script" path="res://scripts/maincharacter.gd" id="1_oia4r"]
+[ext_resource type="Texture2D" uid="uid://dvkvg3awste4q" path="res://assets/character/IMG_1716_page_0001.png" id="2_66ckx"]
+[ext_resource type="Texture2D" uid="uid://bpfm886mqsol6" path="res://assets/character/IMG_1716_page_0002.png" id="3_g68br"]
+[ext_resource type="PackedScene" uid="uid://tr7s3ot2vf5b" path="res://scenes/bullet.tscn" id="4_b5h8s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0a0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_66ckx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g68br")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8haj"]
+size = Vector2(29, 50)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_oia4r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_o0a0w")
+
+[node name="bulletNode" parent="." instance=ExtResource("4_b5h8s")]
+position = Vector2(35, 7)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.5, -2)
+shape = SubResource("RectangleShape2D_g8haj")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

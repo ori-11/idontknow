@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://ct8k4bqajepy4"]
+
+[ext_resource type="PackedScene" uid="uid://dddm8t81ncm74" path="res://scenes/maincharacter.tscn" id="1_hs4hf"]
+[ext_resource type="Texture2D" uid="uid://bcpu1ag74cqw2" path="res://assets/background/IMG_1712_page_0001.jpg" id="1_ndbs6"]
+[ext_resource type="Texture2D" uid="uid://dfu41158hhwt8" path="res://assets/background/IMG_1712_page_0002.jpg" id="2_847k3"]
+[ext_resource type="Script" path="res://scripts/maincamera.gd" id="2_qwgt3"]
+[ext_resource type="Texture2D" uid="uid://d2s8v88bcjmlc" path="res://assets/background/IMG_1712_page_0003.jpg" id="3_cbha4"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="3_rkr5n"]
+[ext_resource type="PackedScene" uid="uid://jsx6r3m4mpgd" path="res://scenes/UI.tscn" id="6_3u3qd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7aeob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ndbs6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_847k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cbha4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(580, 323)
+script = ExtResource("2_qwgt3")
+
+[node name="CharacterBody2D" parent="Camera2D" instance=ExtResource("1_hs4hf")]
+position = Vector2(-433, 146)
+scale = Vector2(3, 3)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_rkr5n")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(5, 1)
+motion_mirroring = Vector2(1153, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_7aeob")
+frame_progress = 0.339861
+centered = false
+
+[node name="Control" parent="." instance=ExtResource("6_3u3qd")]
+
+[node name="spawntime" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="spawntime" to="Camera2D" method="_on_spawntime_timeout"]

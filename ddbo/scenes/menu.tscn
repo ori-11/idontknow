@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://di8g1yirp1yfp"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_u6fap"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6fap")
+
+[node name="filedialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Открыть"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="loadingimage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 381.0
+offset_right = 633.0
+offset_bottom = 412.0
+text = "load image"
+
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 541.0
+offset_top = 453.0
+offset_right = 634.0
+offset_bottom = 484.0
+disabled = true
+text = "Start"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 212.0
+offset_right = 676.0
+offset_bottom = 313.0
+text = "Controls:
+Arrow Keys to fly,
+Spacebar to shoot
+T to change framerate"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 420.0
+offset_right = 846.0
+offset_bottom = 521.0
+text = "You have to load image before starting game"
+horizontal_alignment = 1
+
+[connection signal="file_selected" from="filedialog" to="." method="_on_filedialog_file_selected"]
+[connection signal="pressed" from="loadingimage" to="." method="_on_loadingimage_pressed"]
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
