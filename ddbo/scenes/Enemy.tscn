@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://msoy8wvcpog3"]
+[gd_scene load_steps=16 format=3 uid="uid://msoy8wvcpog3"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_0vlhf"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_m6gps"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="4_q22wl"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_ge470"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="6_mo5ud"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_u3see"]
 
 [sub_resource type="Curve2D" id="Curve2D_3mgfg"]
 
@@ -21,7 +22,7 @@ symmetric = false
 bullet = "a"
 nbr = 5
 iterations = -1
-cooldown_spawn = 1.0
+cooldown_spawn = 2.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
@@ -49,12 +50,21 @@ skip_in_list = true
 
 [sub_resource type="Curve" id="Curve_l5fln"]
 
+[sub_resource type="Resource" id="Resource_c5jjj"]
+script = ExtResource("6_u3see")
+ID = ""
+texture = "star"
+collision = "0"
+SFX = ""
+tex_scale = 1.0
+tex_skew = 0.0
+
 [sub_resource type="Curve" id="Curve_vne2a"]
 
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_ky0ho"]
 script = ExtResource("6_mo5ud")
 damage = 1.0
-speed = 100.0
+speed = 2500.0
 scale = 1.0
 angle = 0.0
 groups = PackedStringArray()
@@ -67,7 +77,8 @@ death_from_collision = true
 death_speed_under = 0.0
 death_culling_overwrite = 3
 spec_modulate_loop = 0.0
-anim_more = Array[Resource("res://addons/BulletUpHell/Bullet/animStates.gd")]([])
+anim_shoot = SubResource("Resource_c5jjj")
+anim_more = Array[ExtResource("6_u3see")]([])
 spec_trail_length = 0.0
 spec_trail_width = 0.0
 spec_trail_modulate = Color(1, 1, 1, 1)

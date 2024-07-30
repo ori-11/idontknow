@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://di8g1yirp1yfp"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_6eo47"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6eo47")
+
+[node name="backtomenu" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 158.0
+offset_bottom = 31.0
+text = "Back to main menu"
+
+[node name="loadingimage" type="Button" parent="."]
+offset_left = 498.0
+offset_top = 363.0
+offset_right = 656.0
+offset_bottom = 394.0
+text = "Load image
+"
+
+[node name="grass" type="Button" parent="."]
+offset_left = 311.0
+offset_top = 461.0
+offset_right = 469.0
+offset_bottom = 492.0
+disabled = true
+text = "Grass Level"
+
+[node name="snow" type="Button" parent="."]
+offset_left = 501.0
+offset_top = 461.0
+offset_right = 659.0
+offset_bottom = 492.0
+disabled = true
+text = "Snow Level
+"
+
+[node name="level" type="Button" parent="."]
+offset_left = 695.0
+offset_top = 461.0
+offset_right = 853.0
+offset_bottom = 492.0
+disabled = true
+text = "Level
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 253.0
+offset_right = 663.0
+offset_bottom = 354.0
+text = "Controls:
+Arrow Keys to fly,
+Spacebar to shoot
+T to change framerate"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 422.0
+offset_right = 767.0
+offset_bottom = 523.0
+text = "You have to load image before starting game"
+horizontal_alignment = 1
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(340, 159)
+ok_button_text = "Открыть"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="preview" type="Sprite2D" parent="."]
+position = Vector2(578, 153)
+scale = Vector2(0.1, 0.1)
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 115.0
+offset_right = 668.0
+offset_bottom = 216.0
+text = "Preview:"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="loadingimage" to="." method="_on_loadingimage_pressed"]
+[connection signal="pressed" from="grass" to="." method="_on_grass_pressed"]
+[connection signal="pressed" from="snow" to="." method="_on_snow_pressed"]
+[connection signal="pressed" from="level" to="." method="_on_level_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

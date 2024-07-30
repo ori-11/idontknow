@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-var speed = 50
+#var bullet_speed = 50
 var SPEED = 1000
+
 var target_velocity = Vector2.ZERO
 
 
@@ -14,6 +15,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	movement(delta)
+	move_and_slide() 
+	
+
+func movement(delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	target_velocity = direction * SPEED
 	target_velocity.x -= delta # 10 is the force
@@ -21,9 +27,6 @@ func _process(delta):
 	velocity = lerp(velocity, target_velocity, delta*10.0)
 	velocity.x -= lerp(SPEED, 0, 0.95)
 	velocity.y += lerp(SPEED, 0, 0.95)
-	move_and_slide() 
-	
-
 
 func _on_area_2d_area_entered(area):
 	queue_free()

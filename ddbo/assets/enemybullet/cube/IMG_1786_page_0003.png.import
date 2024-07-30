@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfu41158hhwt8"
-path="res://.godot/imported/IMG_1712_page_0002.jpg-18dee9386ca473c807c339d460b6dc3f.ctex"
+uid="uid://dwqahiufypqch"
+path="res://.godot/imported/IMG_1786_page_0003.png-4bae5e1bc56ebb7b130c77d9876c27b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/IMG_1712_page_0002.jpg"
-dest_files=["res://.godot/imported/IMG_1712_page_0002.jpg-18dee9386ca473c807c339d460b6dc3f.ctex"]
+source_file="res://assets/enemybullet/cube/IMG_1786_page_0003.png"
+dest_files=["res://.godot/imported/IMG_1786_page_0003.png-4bae5e1bc56ebb7b130c77d9876c27b5.ctex"]
 
 [params]
 
