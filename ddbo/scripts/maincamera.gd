@@ -3,6 +3,7 @@ extends Node2D
 var randomy = null
 var randomx = null
 var enemy = load("res://scenes/Enemy.tscn")
+var door = load("res://scenes/door.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -17,6 +18,11 @@ func _physics_process(_delta):
 		randomx = randompos()
 		enemyspawn()
 		$"../spawntime".start()
+	if $"../doorspawn".is_stopped():
+		randomy = randompos()
+		randomx = randompos()
+		doorspawn()
+		$"../doorspawn".start()
 	pass
 
 func enemyspawn():
@@ -25,6 +31,11 @@ func enemyspawn():
 	newenemy.position = Vector2(randomx, randomy)
 	newenemy.get_child(0).texture = loadedscript.image
 
+func doorspawn():
+	var newdoor = door.instantiate()
+	add_child(newdoor)
+	newdoor.position = Vector2(randomx, randomy)
+
 func randompos():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
@@ -32,4 +43,9 @@ func randompos():
 
 func _on_spawntime_timeout():
 	$"../spawntime".stop()
+	pass # Replace with function body.
+
+
+func _on_doorspawn_timeout():
+	$"../doorspawn".stop()
 	pass # Replace with function body.

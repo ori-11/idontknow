@@ -24,6 +24,7 @@ func _on_file_dialog_file_selected(path):
 	$grass.disabled = false
 	$snow.disabled = false
 	$level.disabled = false
+	$nonlinear.disabled = false
 
 
 func _on_grass_pressed():
@@ -44,4 +45,11 @@ func _on_level_pressed():
 	loadedscript.currentlevel = loadedscript.levels.level
 	visible = false
 	get_tree().change_scene_to_file("res://scenes/mainscene.tscn")
+	pass # Replace with function body.
+
+
+func _on_nonlinear_pressed():
+	#loadedscript.currentlevel = loadedscript.levels.level
+	visible = false
+	get_tree().change_scene_to_file("res://scenes/nonlinearlevel.tscn")
 	pass # Replace with function body.

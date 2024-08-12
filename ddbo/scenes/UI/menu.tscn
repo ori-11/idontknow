@@ -19,6 +19,7 @@ offset_bottom = 31.0
 text = "Back to main menu"
 
 [node name="loadingimage" type="Button" parent="."]
+layout_mode = 0
 offset_left = 498.0
 offset_top = 363.0
 offset_right = 656.0
@@ -27,6 +28,7 @@ text = "Load image
 "
 
 [node name="grass" type="Button" parent="."]
+layout_mode = 0
 offset_left = 311.0
 offset_top = 461.0
 offset_right = 469.0
@@ -35,6 +37,7 @@ disabled = true
 text = "Grass Level"
 
 [node name="snow" type="Button" parent="."]
+layout_mode = 0
 offset_left = 501.0
 offset_top = 461.0
 offset_right = 659.0
@@ -43,7 +46,18 @@ disabled = true
 text = "Snow Level
 "
 
+[node name="nonlinear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 535.0
+offset_right = 659.0
+offset_bottom = 566.0
+disabled = true
+text = "Non-linear
+"
+
 [node name="level" type="Button" parent="."]
+layout_mode = 0
 offset_left = 695.0
 offset_top = 461.0
 offset_right = 853.0
@@ -97,5 +111,6 @@ horizontal_alignment = 1
 [connection signal="pressed" from="loadingimage" to="." method="_on_loadingimage_pressed"]
 [connection signal="pressed" from="grass" to="." method="_on_grass_pressed"]
 [connection signal="pressed" from="snow" to="." method="_on_snow_pressed"]
+[connection signal="pressed" from="nonlinear" to="." method="_on_nonlinear_pressed"]
 [connection signal="pressed" from="level" to="." method="_on_level_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

@@ -1,28 +1,26 @@
-[gd_scene load_steps=16 format=3 uid="uid://msoy8wvcpog3"]
+[gd_scene load_steps=15 format=3 uid="uid://msoy8wvcpog3"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_0vlhf"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHPattern.gd" id="2_m6gps"]
-[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="3_n3yfd"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHSpawnPoint.gd" id="4_q22wl"]
+[ext_resource type="Script" path="res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd" id="4_s78k4"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Nodes/BuHBulletProperties.gd" id="5_ge470"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/BulletProps.gd" id="6_mo5ud"]
 [ext_resource type="Script" path="res://addons/BulletUpHell/Bullet/animStates.gd" id="6_u3see"]
 
-[sub_resource type="Curve2D" id="Curve2D_3mgfg"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_i5q4m"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2f0ic"]
 resource_name = "PatternCircle"
 source_geometry_group_name = &"navigation_polygon_source_group"
-script = ExtResource("3_n3yfd")
-radius = 25.0
+script = ExtResource("4_s78k4")
+radius = 100.0
 angle_total = 6.28319
 angle_decal = 0.0
 center = 0
 symmetric = false
 bullet = "a"
-nbr = 5
+nbr = 10
 iterations = -1
-cooldown_spawn = 2.0
+cooldown_spawn = 5.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
@@ -166,10 +164,11 @@ r_start_distance_choice = ""
 r_start_distance_variation = Vector3(0, 0, 0)
 
 [node name="SpawnPattern" type="Path2D" parent="."]
-curve = SubResource("Curve2D_3mgfg")
+position = Vector2(-1.52588e-05, 0)
+scale = Vector2(4.00048, 5.33397)
 script = ExtResource("2_m6gps")
 id = "other"
-pattern = SubResource("NavigationPolygon_i5q4m")
+pattern = SubResource("NavigationPolygon_2f0ic")
 
 [node name="BulletProperties" type="Path2D" parent="."]
 curve = SubResource("Curve2D_0vj88")

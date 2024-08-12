@@ -2,13 +2,18 @@ extends Node
 
 var image = null
 
+var isLinear = true
+
 enum levels{
 	grass,
 	snow,
 	level
 }
 
-var currentlevel = levels
+var currentlevel = null
+
+func _ready():
+	currentlevel = levels.grass 
 
 func _input(event):
 	if event.is_action_pressed("T"):
