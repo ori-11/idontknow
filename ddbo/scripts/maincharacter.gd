@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-#var bullet_speed = 50
 var SPEED = 1000
-
 var target_velocity = Vector2.ZERO
-
 var flip
+var firstInput : bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	loadedscript.isLinear = false
@@ -15,17 +15,15 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	movement(delta)
-	move_and_slide() 
+	if(firstInput): move_and_slide() 
 	
 
 func movement(delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+	if (direction != Vector2.ZERO): firstInput = true
 	target_velocity = direction * SPEED
-	#target_velocity.x -= delta # 10 is the force
-	#target_velocity.y += delta
 	
 	if Input.is_action_pressed("ui_left"):
 		$AnimatedSprite2D.scale.x = -0.1
