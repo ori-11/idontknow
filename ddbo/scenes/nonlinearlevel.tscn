@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://crk7dyo410vku"]
+[gd_scene load_steps=6 format=3 uid="uid://crk7dyo410vku"]
 
 [ext_resource type="Texture2D" uid="uid://cd314yset0hxy" path="res://assets/background/nonlinear/grass/IMG_1860.png" id="1_hummp"]
 [ext_resource type="Script" path="res://scripts/nonlinearlevel.gd" id="1_xnr1d"]
 [ext_resource type="PackedScene" uid="uid://dddm8t81ncm74" path="res://scenes/maincharacter.tscn" id="2_o5pfs"]
-[ext_resource type="PackedScene" uid="uid://dub3g23mi1oek" path="res://scenes/door.tscn" id="4_0v60w"]
-[ext_resource type="PackedScene" uid="uid://cgjbc07ljoga8" path="res://scenes/scrimbloids.tscn" id="5_83sj1"]
+[ext_resource type="PackedScene" uid="uid://cgjbc07ljoga8" path="res://scenes/scrimbloids.tscn" id="4_xmpgx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qye4u"]
 animations = [{
@@ -36,21 +35,17 @@ position = Vector2(884, 506)
 scale = Vector2(3, 3)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(0.7, 0.7)
 
-[node name="position1" type="Node2D" parent="CharacterBody2D/Camera2D"]
-position = Vector2(219, 0)
-
-[node name="position2" type="Node2D" parent="CharacterBody2D/Camera2D"]
-position = Vector2(-217.667, 0)
+[node name="position1" type="Node2D" parent="CharacterBody2D"]
+position = Vector2(224, 21.6667)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 
-[node name="door" parent="." instance=ExtResource("4_0v60w")]
-position = Vector2(1239, 487)
-
-[node name="scrimblo" parent="." instance=ExtResource("5_83sj1")]
-position = Vector2(1078, 734)
+[node name="scrimblo" parent="." instance=ExtResource("4_xmpgx")]
+position = Vector2(424, 363)
+scale = Vector2(4, 4)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

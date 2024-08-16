@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var door = load("res://scenes/door.tscn")
 var randomy = null
-@onready var pxsition = $CharacterBody2D/Camera2D/position1
+@onready var pxsition = $CharacterBody2D/position1
 @onready var scrimbloid = load("res://scenes/scrimbloids.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -27,13 +27,16 @@ func _process(delta):
 
 func scrimbloidspawn():
 	var newscrimbloid = scrimbloid.instantiate()
-	add_child(newscrimbloid)
-	newscrimbloid.position = Vector2(pxsition.position.x, randomy)
+	newscrimbloid.position.y = randomy
+	pxsition.add_child(newscrimbloid)
+	newscrimbloid.reparent($".")
 
 func doorspawn():
 	var newdoor = door.instantiate()
-	add_child(newdoor)
-	newdoor.position = Vector2(pxsition.position.x, randomy)
+	newdoor.position.y = randomy
+	pxsition.add_child(newdoor)
+	newdoor.reparent($".")
+	
 
 func randompos():
 	var random = RandomNumberGenerator.new()
