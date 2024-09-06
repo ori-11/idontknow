@@ -50,5 +50,5 @@ func _on_area_2d_area_entered(area):
 	elif area.is_in_group("scrimbloid"):
 		pass
 	else:
-		queue_free()
+		loadedscript.hp -= 1
 	pass # Replace with function body.

@@ -12,4 +12,8 @@ func _process(_delta):
 	$Label.set_text("FPS" + str(Engine.get_frames_per_second()))
 	
 	#other ui elements
+	match loadedscript.hp:
+		3: $tylerdurden.play("first")
+		2: $tylerdurden.play("second")
+		1: $tylerdurden.play("third")
 	pass

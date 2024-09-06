@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://53p6v4idm5hy"]
+
+[ext_resource type="Texture2D" uid="uid://db3mg4fjfnm5b" path="res://assets/enemybullet/star/IMG_1777_page_0001.png" id="1_uxk8g"]
+[ext_resource type="Texture2D" uid="uid://ce5trum85ttd3" path="res://assets/enemybullet/star/IMG_1777_page_0002.png" id="2_18xux"]
+[ext_resource type="Texture2D" uid="uid://bbf636xpq58ob" path="res://assets/enemybullet/star/IMG_1777_page_0003.png" id="3_qwhnd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ttpr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uxk8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_18xux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qwhnd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p83ig"]
+size = Vector2(78, 80)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ttpr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -3)
+shape = SubResource("RectangleShape2D_p83ig")

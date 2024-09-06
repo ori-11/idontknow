@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://csdf3o85bq0el"]
+
+[ext_resource type="Script" path="res://scripts/sigmamenu.gd" id="1_v6qvp"]
+[ext_resource type="Texture2D" uid="uid://dgw46fhq6smwt" path="res://assets/menu/IMG_2094_page_0001.png" id="2_f16tm"]
+[ext_resource type="Texture2D" uid="uid://dld6m10pji02j" path="res://assets/menu/IMG_2094_page_0002.png" id="3_tfk0f"]
+[ext_resource type="Texture2D" uid="uid://b8kj7o5e1th35" path="res://assets/menu/IMG_2094_page_0003.png" id="4_8g8xn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dbw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f16tm")
+}],
+"loop": true,
+"name": &"shovel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tfk0f")
+}],
+"loop": true,
+"name": &"sigmamode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8g8xn")
+}],
+"loop": true,
+"name": &"yeah",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm4io"]
+size = Vector2(380.746, 84.6102)
+
+[node name="sigmamenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v6qvp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(342.315, 324.5)
+scale = Vector2(0.567308, 0.567308)
+sprite_frames = SubResource("SpriteFrames_1dbw5")
+animation = &"shovel"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(22.3605, 29.0848)
+shape = SubResource("RectangleShape2D_bm4io")
+
+[node name="Area2D2" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 141.898)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D2"]
+position = Vector2(22.3605, 29.0848)
+shape = SubResource("RectangleShape2D_bm4io")
+
+[node name="Area2D3" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 281.153)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D3"]
+position = Vector2(22.3605, 29.0848)
+shape = SubResource("RectangleShape2D_bm4io")

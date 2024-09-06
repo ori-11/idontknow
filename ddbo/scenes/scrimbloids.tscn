@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cgjbc07ljoga8"]
+[gd_scene load_steps=60 format=3 uid="uid://cgjbc07ljoga8"]
 
 [ext_resource type="Script" path="res://scripts/scrimbloids.gd" id="1_b3gpy"]
 [ext_resource type="Texture2D" uid="uid://bnlsmsdjcnn0i" path="res://assets/scrimblos/rave/rave_page_0001.png" id="2_ri6ly"]
@@ -50,9 +50,10 @@
 [ext_resource type="Texture2D" uid="uid://cycmnq421q3yu" path="res://assets/scrimblos/rave/rave_page_0047.png" id="48_t3a3a"]
 [ext_resource type="Texture2D" uid="uid://0mx8hqgk8khi" path="res://assets/scrimblos/rave/rave_page_0048.png" id="49_pt32h"]
 [ext_resource type="Texture2D" uid="uid://dq6b24jk4y8wq" path="res://assets/scrimblos/rave/rave_page_0049.png" id="50_5hjwk"]
-[ext_resource type="Texture2D" uid="uid://bbkk3fx6may8b" path="res://assets/scrimblos/textbox/image0_page_0001.png" id="51_hkhtf"]
-[ext_resource type="Texture2D" uid="uid://dar0kqhy4or0k" path="res://assets/scrimblos/textbox/image0_page_0002.png" id="52_arn2g"]
+[ext_resource type="Texture2D" uid="uid://c4j0xpkfwoina" path="res://assets/scrimblos/textbox2/dialogue_box_page_0001.png" id="51_q2rxd"]
+[ext_resource type="Texture2D" uid="uid://d25vapisytrst" path="res://assets/scrimblos/textbox2/dialogue_box_page_0002.png" id="52_sn8s4"]
 [ext_resource type="Texture2D" uid="uid://d508vjc5i6a1" path="res://assets/scrimblos/rave/hidingplace/image0.png" id="53_406jb"]
+[ext_resource type="Script" path="res://scripts/hidingspot.gd" id="53_c801u"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5o4ra"]
 animations = [{
@@ -216,10 +217,10 @@ size = Vector2(40, 60)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("51_hkhtf")
+"texture": ExtResource("51_q2rxd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("52_arn2g")
+"texture": ExtResource("52_sn8s4")
 }],
 "loop": true,
 "name": &"textbox",
@@ -227,18 +228,19 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ysc58"]
-font_size = 20
+font_size = 45
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx2v1"]
 size = Vector2(195.481, 190.77)
 
 [node name="scrimblo" type="Node2D"]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_b3gpy")
 
 [node name="aa" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(0.4, 0.4)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5o4ra")
 animation = &"rave"
 frame_progress = 0.839756
@@ -251,17 +253,17 @@ shape = SubResource("RectangleShape2D_21a7k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(-33, -35)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-1, -211)
+scale = Vector2(0.369643, 0.369643)
 sprite_frames = SubResource("SpriteFrames_so1ms")
 animation = &"textbox"
 frame_progress = 0.56777
 
 [node name="Label" type="Label" parent="AnimatedSprite2D"]
-offset_left = -220.059
-offset_top = -150.898
-offset_right = 159.941
-offset_bottom = 34.1024
+offset_left = -503.0
+offset_top = -154.0
+offset_right = 506.0
+offset_bottom = 173.0
 text = "Some text"
 label_settings = SubResource("LabelSettings_ysc58")
 horizontal_alignment = 1
@@ -270,6 +272,7 @@ autowrap_mode = 3
 
 [node name="hidingspot" type="Area2D" parent="."]
 scale = Vector2(0.424595, 0.424595)
+script = ExtResource("53_c801u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hidingspot"]
 position = Vector2(-1.17759, 8.24316)

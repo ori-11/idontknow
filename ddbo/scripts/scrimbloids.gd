@@ -49,7 +49,7 @@ func _on_area_2d_area_entered(area):
 
 func _on_area_2d_area_exited(area):
 	$AnimatedSprite2D.visible = false
-	$AnimatedSprite2D.play("stop")
+	$AnimatedSprite2D.stop
 
 
 func _on_hidingspot(area):

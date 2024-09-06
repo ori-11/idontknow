@@ -35,7 +35,7 @@ position = Vector2(884, 506)
 scale = Vector2(3, 3)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.75, 0.75)
 
 [node name="position1" type="Node2D" parent="CharacterBody2D"]
 position = Vector2(224, 21.6667)
@@ -45,7 +45,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="scrimblo" parent="." instance=ExtResource("4_xmpgx")]
+visible = false
 position = Vector2(424, 363)
-scale = Vector2(4, 4)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

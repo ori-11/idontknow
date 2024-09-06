@@ -289,7 +289,7 @@ symmetric = false
 bullet = "a"
 nbr = 20
 iterations = -1
-cooldown_spawn = 0.1
+cooldown_spawn = 5.0
 cooldown_shoot = 0.0
 cooldown_next_spawn = 0.0
 cooldown_next_shoot = 0.0
@@ -331,7 +331,7 @@ tex_skew = 0.0
 [sub_resource type="PackedDataContainer" id="PackedDataContainer_ky0ho"]
 script = ExtResource("6_mo5ud")
 damage = 1.0
-speed = 500.0
+speed = 300.0
 scale = 1.0
 angle = 0.0
 groups = PackedStringArray()

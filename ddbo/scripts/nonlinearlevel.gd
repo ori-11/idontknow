@@ -16,7 +16,7 @@ func _process(delta):
 	if $Timer.is_stopped():
 		var random = RandomNumberGenerator.new()
 		random.randomize()
-		var debil = random.randi_range(0, 1)
+		var debil = random.randi_range(0, 10)
 		randomy = randompos()
 		if debil == 0:
 			doorspawn()
