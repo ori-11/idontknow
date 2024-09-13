@@ -4,6 +4,7 @@ var SPEED = 1000
 var target_velocity = Vector2.ZERO
 var flip
 var firstInput : bool = false
+var timeout = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -50,5 +51,12 @@ func _on_area_2d_area_entered(area):
 	elif area.is_in_group("scrimbloid"):
 		pass
 	else:
-		loadedscript.hp -= 1
+		if !timeout:
+			loadedscript.hp -= 1
+			$dildo.start()
+	pass # Replace with function body.
+
+
+func _on_dildo_timeout():
+	timeout = true
 	pass # Replace with function body.

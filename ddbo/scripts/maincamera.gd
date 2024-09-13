@@ -27,7 +27,6 @@ func _physics_process(_delta):
 
 func enemyspawn():
 	var newenemy = enemy.instantiate()
-	newenemy.setup()
 	add_child(newenemy)
 	newenemy.position = Vector2(randomx, randomy)
 	newenemy.get_child(0).texture = loadedscript.image
